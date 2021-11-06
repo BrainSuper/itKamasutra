@@ -1,0 +1,18 @@
+.nav {
+    margin-top: 20px;
+    grid-area: nav;
+    background-color: limegreen;
+    padding-top: 10px;
+}
+.item {
+    color: white;
+    font-size: 25px;
+    margin-left: 10px;
+    line-height: 32px;
+}
+.active {
+    color: black;
+}
+.item:last-child {
+    margin-top: 40px;
+}

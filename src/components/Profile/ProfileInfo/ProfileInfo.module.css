@@ -1,0 +1,27 @@
+.profile__img {
+    height: 30%;
+    width: 100%;
+}
+
+.descr {
+    display: flex;
+}
+.descr img {
+    width: 150px;
+    height: 100px;
+}
+.resume {
+    margin-left: 25px;
+    padding: 0;
+
+}
+.resume h2 {
+    margin: 0;
+    padding: 0;
+    color: dimgrey;
+    margin-bottom: 20px;
+}
+.resume div {
+    color: dimgrey;
+    font-size: 18px;
+}

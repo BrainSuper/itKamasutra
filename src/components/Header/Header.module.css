@@ -1,0 +1,14 @@
+.header {
+    margin-top: 20px;
+    grid-area: header;
+    background-color: limegreen;
+    padding-left: 10px;
+}
+.header img {
+    display: block;
+    width: 80px;
+    height: 75%;
+
+    transform: translateY(15%);
+    padding: 0;
+}

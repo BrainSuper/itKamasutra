@@ -1,0 +1,24 @@
+.subtitle {
+    font-size: 32px;
+    color: lightgrey;
+    margin-top: 60px;
+}
+.friends__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+.friend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.friend__name {
+    color: white;
+    font-size: 15px;
+    margin-top: 5px;
+}
+.friend img {
+    width: 30px;
+    height: 30px;
+}
