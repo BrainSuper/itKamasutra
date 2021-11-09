@@ -1,0 +1,11 @@
+.subtitle {
+    font-size: 32px;
+    color: lightgrey;
+    margin-top: 60px;
+}
+.friends__wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}

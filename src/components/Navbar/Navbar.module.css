@@ -1,17 +1,22 @@
+* {
+    font-family: Arial;
+}
 .nav {
     margin-top: 20px;
     grid-area: nav;
     background-color: limegreen;
     padding-top: 10px;
+    padding-left: 10px;
 }
-.item {
+.item a{
     color: white;
     font-size: 25px;
-    margin-left: 10px;
     line-height: 32px;
+    text-decoration: none;
+
 }
-.active {
-    color: black;
+.item .active {
+    color: gold;
 }
 .item:last-child {
     margin-top: 40px;

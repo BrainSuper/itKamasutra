@@ -1,14 +1,5 @@
-.subtitle {
-    font-size: 32px;
-    color: lightgrey;
-    margin-top: 60px;
-}
-.friends__wrapper {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-}
 .friend {
+    width: 33.3%;
     display: flex;
     flex-direction: column;
     align-items: center;
