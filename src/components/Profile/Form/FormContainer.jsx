@@ -1,29 +1,22 @@
 import React from 'react';
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 import Form from "./Form";
-import StoreContext from "../../../StoreContext";
+import {connect} from "react-redux";
 
-
-const FormContainer = () => {
-
-
-    return (
-        <StoreContext.Consumer>
-            {
-            (store => {
-                let addPost = () => {
-                    store.dispatch(addPostActionCreator());
-                }
-                let updateNewPostText = (text) => {
-
-                    store.dispatch(updateNewPostTextActionCreator(text));
-                }
-                return (<Form updateNewPostText={updateNewPostText} addPost={addPost}/>)
-            }
-                )
-        }
-        </StoreContext.Consumer>
-    )
+let mapStateToProps = (state) => {
+    return {}
 }
+let mapDispatchToProps = (dispatch) => {
+    return {
+        updateNewPostText: (text) => {
+            dispatch(updateNewPostTextActionCreator(text));
+        },
+        addPost: () => {
+            dispatch(addPostActionCreator());
+        }
+    }
+}
+const FormContainer = connect(mapStateToProps, mapDispatchToProps)(Form);
+
 
 export default FormContainer;
