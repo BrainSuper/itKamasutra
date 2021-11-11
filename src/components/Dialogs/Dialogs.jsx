@@ -6,7 +6,7 @@ import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "../..
 
 
 const Dialogs = (props) => {
-    let messages = props.state.messageData
+    let messages = props.messageData
         .map(message => {
             if (message.id === 1 || message.id === 3) {
                 return <Message class={classes.message__my} message={message.message}/>
@@ -17,17 +17,18 @@ const Dialogs = (props) => {
         })
 
 
-    let dialogElements = props.state.dialogsData
+    let dialogElements = props.dialogsData
         .map(el => <DialogItem name={el.name} id={el.id}/>)
 
-    //for study
 let messageArea = React.createRef();
+
     let updateNewMessageBody = () => {
         let messageText = messageArea.current.value;
-        props.dispatch(updateNewMessageBodyActionCreator(messageText));
+        props.updateNewMessageBody(messageText);
+
     }
     let sendMessage = () => {
-        props.dispatch(sendMessageActionCreator());
+        props.sendMessage();
     }
     return (
         <div className={classes.dialogs}>
@@ -37,7 +38,7 @@ let messageArea = React.createRef();
             <div className={classes.messages}>
                 {messages}
             </div>
-            <textarea ref={messageArea} name="" id="" cols="30" rows="10" onChange={updateNewMessageBody} value={props.state.newMessageBody}></textarea>
+            <textarea ref={messageArea} name="" id="" cols="30" rows="10" onChange={updateNewMessageBody} value={props.newMessageBody}></textarea>
             <button type='button' onClick={sendMessage}></button>
         </div>
     )
