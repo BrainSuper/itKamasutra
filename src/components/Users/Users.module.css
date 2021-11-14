@@ -1,0 +1,60 @@
+.usersWrapper {
+display: flex;
+    flex-direction: column;
+}
+.user {
+    display: flex;
+    justify-content: space-between;
+
+    width: 600px;
+    height: 80px;
+    margin-bottom: 40px;
+}
+.follow {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+}
+.follow img {
+    margin-bottom: 5px;
+    height: 80px;
+    border-radius: 50%;
+}
+.follow button {
+    background-color: green;
+    color: white;
+    border: none;
+    width: 80px;
+    height: 30px;
+}
+.description {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    border: 1px solid darkgrey;
+    border-radius: 5px;
+    padding: 0;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+h3, h2 {
+    padding: 5px;
+    margin: 0;
+}
+h2 {
+    font-size: 15px;
+    color: grey;
+
+}
+h3 {
+    font-size: 12px;
+    color: darkgrey;
+}
+.location {
+    padding: 5px;
+    color: grey;
+    font-size: 15px;
+}

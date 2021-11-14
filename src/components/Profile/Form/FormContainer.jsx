@@ -4,7 +4,9 @@ import Form from "./Form";
 import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
-    return {}
+    return {
+        newPostText: state.profilePage.newPostText
+    }
 }
 let mapDispatchToProps = (dispatch) => {
     return {
