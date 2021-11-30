@@ -9,6 +9,14 @@
     width: 80px;
     height: 75%;
 
-    transform: translateY(15%);
+
     padding: 0;
+}
+.loginBlock {
+    float: right;
+    transform: translateY(-100%);
+
+}
+.loginBlock a {
+    color: white;
 }

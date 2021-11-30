@@ -58,3 +58,6 @@ h3 {
     color: grey;
     font-size: 15px;
 }
+.selectedPage {
+    font-weight: bold;
+}

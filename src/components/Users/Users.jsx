@@ -1,26 +1,40 @@
 import React from "react";
 import classes from './Users.module.css';
-import axios from "axios";
 import avatar from '../../img/ava.png'
+import {NavLink} from "react-router-dom";
+import axios from "axios";
+import {usersAPI} from "../../api/api";
 
-class Users extends React.Component {
-componentDidMount() {
-    axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-        this.props.setUsers(response.data.items)
-    })
-}
 
-    render() {
+let Users = (props) => {
     return <div className={classes.usersWrapper}>
-        {this.props.users.map(user => <div className={classes.user} key={user.id}>
+        <div>
+            {props.pages.map(p => {
+                return <span onClick={(e) => {
+                    props.onPageChanged(p)
+                }} className={props.currentPage === p && classes.selectedPage}>{p}</span>;
+            })}
+        </div>
+        {props.users.map(user => <div className={classes.user} key={user.id}>
             <div className={classes.follow}>
-                <img src={user.photos.small != null ? user.photos.small : avatar } alt=""/>
+                <NavLink to={'/profile/' + user.id}>
+                    <img src={user.photos.small != null ? user.photos.small : avatar} alt=""/>
+                </NavLink>
                 {user.followed
                     ? <button onClick={() => {
-                        this.props.unfollow(user.id)
+                        usersAPI.unfollowUsers(user.id).then(response => {
+                            if (response.resultCode === 0) {
+                                props.unfollow(user.id);
+                            }
+                        })
                     }}>Unfollow</button>
                     : <button onClick={() => {
-                        this.props.follow(user.id)
+                        usersAPI.followUsers(user.id).then(
+                            response => {
+                                if (response.resultCode === 0) {
+                                    props.follow(user.id);
+                                }
+                            })
                     }}>Follow</button>}
             </div>
             <div className={classes.description}>
@@ -35,7 +49,6 @@ componentDidMount() {
             </div>
         </div>)}
     </div>
-    }
-}
 
+}
 export default Users;
