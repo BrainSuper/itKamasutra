@@ -1,9 +1,7 @@
 import React from "react";
 import {Field, handleSubmit, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {login} from "../../redux/profile-reducer";
-import {render} from "@testing-library/react";
-import {setAuthUserDataTC} from "../../redux/auth-reducer";
+import {login} from "../../redux/auth-reducer";
 
 
 let LoginReduxForm = (props) => {
@@ -24,7 +22,7 @@ LoginReduxForm = reduxForm({form: 'login'})(LoginReduxForm);
 class Login extends React.Component {
 
     onSubmit = (formData) => {
-        this.props.setAuthUserDataTC(formData);
+        this.props.login(formData);
     }
     render() {
         return <div>
@@ -43,5 +41,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {setAuthUserDataTC})(Login);
+export default connect(mapStateToProps, {login})(Login);
 
