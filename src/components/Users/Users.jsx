@@ -21,20 +21,12 @@ let Users = (props) => {
                     <img src={user.photos.small != null ? user.photos.small : avatar} alt=""/>
                 </NavLink>
                 {user.followed
-                    ? <button onClick={() => {
-                        usersAPI.unfollowUsers(user.id).then(response => {
-                            if (response.resultCode === 0) {
-                                props.unfollow(user.id);
-                            }
-                        })
+                    ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
+                            props.unfollowSuccess(user.id);
                     }}>Unfollow</button>
-                    : <button onClick={() => {
-                        usersAPI.followUsers(user.id).then(
-                            response => {
-                                if (response.resultCode === 0) {
-                                    props.follow(user.id);
-                                }
-                            })
+                    : <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
+
+                        props.followSuccess(user.id);
                     }}>Follow</button>}
             </div>
             <div className={classes.description}>

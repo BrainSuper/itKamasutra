@@ -18,7 +18,31 @@ export const usersAPI = {
     },
     unfollowUsers(userId) {
         return instance.delete(`follow/${userId}`).then(response => response.data)
+    },
+    getProfileUsers(userId) {
+        console.warn('This appeal is deprecated, use profileAPI');
+        return profileAPI.getProfileUsers(userId);
     }
 }
 
-// sagfdsagsasgfasfdgsdg
+export const profileAPI = {
+    getProfileUsers(userId) {
+        return instance.get(`profile/` + userId).then(response => response.data)
+    },
+    getStatus(userId) {
+        return instance.get(`profile/status/${userId}`)
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status` , {status: status})
+    }
+}
+export const authAPI = {
+    me () {
+        return instance.get(`auth/me`).then(response => response.data)
+    },
+    login (formData) {
+        return instance.post(`auth/login`, formData)
+    }
+}
+
+

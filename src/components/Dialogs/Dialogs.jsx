@@ -3,6 +3,7 @@ import classes from './Dialogs.module.css';
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "../../redux/dialog-reducer";
+import {Redirect} from "react-router-dom";
 
 
 const Dialogs = (props) => {
