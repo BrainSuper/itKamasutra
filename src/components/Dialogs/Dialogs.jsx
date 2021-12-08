@@ -4,6 +4,18 @@ import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "../../redux/dialog-reducer";
 import {Redirect} from "react-router-dom";
+import {Field, reduxForm} from "redux-form";
+
+let MessageForm = (props) => {
+    return <div>
+        <form onSubmit={props.handleSubmit}>
+            <Field component='textarea' name='message' type='text'/>
+            <button></button>
+        </form>
+    </div>
+}
+
+MessageForm = reduxForm({form: 'messageForm'})(MessageForm);
 
 
 const Dialogs = (props) => {
@@ -28,8 +40,8 @@ let messageArea = React.createRef();
         props.updateNewMessageBody(messageText);
 
     }
-    let sendMessage = () => {
-        props.sendMessage();
+    const sendMessage = (formData) => {
+        props.sendMessage(formData.message)
     }
     return (
         <div className={classes.dialogs}>
@@ -39,8 +51,8 @@ let messageArea = React.createRef();
             <div className={classes.messages}>
                 {messages}
             </div>
-            <textarea ref={messageArea} name="" id="" cols="30" rows="10" onChange={updateNewMessageBody} value={props.newMessageBody}></textarea>
-            <button type='button' onClick={sendMessage}></button>
+
+            <MessageForm onSubmit={sendMessage}/>
         </div>
     )
 }
