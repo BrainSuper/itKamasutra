@@ -13,15 +13,23 @@ import Users from "./Users";
 import preloader from '../../img/spiner.svg';
 import Preloader from "../common/Preloader/Preloader";
 import {usersAPI} from "../../api/api";
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount, getUsers,
+} from "../../redux/users-select";
 
 let mapStateToProps = (state) => {
+    console.log('Mapstatetoprops');
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state)
 
     }
 
@@ -64,6 +72,7 @@ class UsersContainerComponent extends React.Component {
     }
 
     render() {
+        console.log('render');
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
         let pages = [];
         for (let i = 1; i <= pagesCount; i++) {

@@ -1,4 +1,7 @@
 import {authAPI} from "../api/api";
+import {Redirect} from "react-router-dom";
+import React from "react";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const LOGOUT = 'LOGOUT';
@@ -35,7 +38,7 @@ const authReducer = (state = initialState, action) => {
 const setAuthUserData = (userId, email, login) => ({type: SET_USER_DATA, data: {userId, email, login}});
 const logout = () => ({type: LOGOUT});
 export const getAuthUserData = () => (dispatch) => {
-    authAPI.me().then(response => {
+    return authAPI.me().then(response => {
         if (response.resultCode === 0) {
             dispatch(setAuthUserData(response.data.id, response.data.email, response.data.login))
         }
@@ -47,8 +50,11 @@ export const login = (formData) => (dispatch) => {
             authAPI.me().then(responseMe => {
                 if (responseMe.resultCode === 0) {
                     dispatch(setAuthUserData(responseMe.data.id, responseMe.data.email, responseMe.data.login))
+
                 }
             })
+        } else {
+            dispatch(stopSubmit('login', {_error: 'Wrong email or password'}))
         }
     })
 }

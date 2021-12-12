@@ -14,7 +14,8 @@ let initialState = {
     newPostText: '',
     profile: null,
     status: 'yyy',
-    loginData: null
+    loginData: null,
+    fake: 10
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -37,6 +38,9 @@ const profileReducer = (state = initialState, action) => {
         }
         case SET_STATUS: {
             return {...state, status: action.status};
+        }
+        case 'FAKE': {
+            return {...state, fake: state.fake + 1};
         }
         default:
             return state;
